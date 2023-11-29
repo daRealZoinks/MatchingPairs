@@ -1,4 +1,6 @@
-﻿namespace Game.ViewModels
+﻿using Game.Services;
+
+namespace Game.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

@@ -3,15 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Game"
+        xmlns:local="clr-namespace:Game.Views"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
     <Grid>
-        <Button Content="Play" HorizontalAlignment="Right" Margin="0,251,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
-        <Button Content="Options" HorizontalAlignment="Right" Margin="0,310,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
-        <Button Content="Quit" HorizontalAlignment="Right" Margin="0,365,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
-        <Button Content="Change user" HorizontalAlignment="Left" Margin="658,188,0,0" VerticalAlignment="Top" Height="29" Width="77"/>
-        <Label Content="Welcome [Name goes here]" HorizontalAlignment="Left" Margin="46,28,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="150" Margin="622,19,0,0" VerticalAlignment="Top" Width="150" Source="/Images/ProfilePictures/NoProfilePicture.bmp"/>
+        <local:MainContentView/>
     </Grid>
 </Window>
