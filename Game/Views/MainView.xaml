@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Game.Views"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
-    <Grid>
+    <!--<Grid>
         <local:MainContentView/>
-    </Grid>
+    </Grid>-->
+    <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
 </Window>

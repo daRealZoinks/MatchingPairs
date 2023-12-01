@@ -3,13 +3,12 @@ using Game.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
+using NavigationService = Game.Services.NavigationService;
 
 namespace Game.ViewModels
 {
 	public class ChangeUserViewModel : ViewModelBase
 	{
-
 		private ObservableCollection<User> _users;
 		public ObservableCollection<User> Users
 		{
@@ -78,6 +77,7 @@ namespace Game.ViewModels
 			ChangeUserCommand = new RelayCommand(ChangeUser);
 			NextImageCommand = new RelayCommand(NextImage);
 			PreviousImageCommand = new RelayCommand(PreviousImage);
+
 		}
 
 		public void CreateUser()
@@ -103,6 +103,8 @@ namespace Game.ViewModels
 
 		public void ChangeUser()
 		{
+			NavigationService.GetInstance().GoBack();
+
 		}
 
 		public void NextImage()

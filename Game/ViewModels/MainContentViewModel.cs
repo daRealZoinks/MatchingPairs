@@ -1,7 +1,6 @@
-﻿using Game.Services;
-using Game.Views;
-using System.Windows;
+﻿using Game.Views;
 using System.Windows.Input;
+using NavigationService = Game.Services.NavigationService;
 
 namespace Game.ViewModels;
 
@@ -16,13 +15,7 @@ public class MainContentViewModel
 
 	private void SwitchToUserControl2()
 	{
-		var userControl2 = new ChangeUserView();
-
-		//TODO: We need a navigation service 
-		if (Application.Current.MainWindow is MainView mainWindow)
-		{
-			mainWindow.Content = userControl2;
-		}
+		NavigationService.GetInstance().NavigateToPage<ChangeUserView>();
 	}
 }
 
