@@ -16,16 +16,12 @@ namespace Game.Models
 			ProfilePic = profilePic;
 		}
 
-		[XmlElement("Username")]
 		public string Username { get; set; } 
 
-		[XmlElement("TotalGames")]
 		public int TotalGames { get; set; } 
 
-		[XmlElement("GamesWon")]
 		public int GamesWon { get; set; }
 
-		[XmlElement("ProfilePic")]
 		public string ProfilePic { get; set; }
 
     }
