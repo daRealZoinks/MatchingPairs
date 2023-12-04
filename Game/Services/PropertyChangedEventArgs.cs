@@ -1,4 +1,4 @@
-﻿namespace Game.ViewModels
+﻿namespace Game.Services
 {
     public class PropertyChangedEventArgs : EventArgs
     {
