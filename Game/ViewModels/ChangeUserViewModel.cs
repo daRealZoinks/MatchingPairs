@@ -16,7 +16,7 @@ namespace Game.ViewModels
 			set
 			{
 				_users = value;
-				OnPropertyChanged("Users");
+				OnPropertyChanged();
 			}
 		}
 
@@ -29,7 +29,7 @@ namespace Game.ViewModels
 			set
 			{
 				_selectedUser = value;
-				OnPropertyChanged("SelectedUser");
+				OnPropertyChanged();
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace Game.ViewModels
 			set
 			{
 				_newUserName = value;
-				OnPropertyChanged("NewUsername");
+				OnPropertyChanged();
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace Game.ViewModels
 			set
 			{
 				_currentProfilePicture = value;
-				OnPropertyChanged(nameof(_currentProfilePicture));
+				OnPropertyChanged();
 			}
 		}
 
