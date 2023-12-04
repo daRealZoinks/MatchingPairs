@@ -2,5 +2,6 @@
 {
     public interface INotifyPropertyChanged
     {
+        event PropertyChangedEventHandler? PropertyChanged;
     }
 }

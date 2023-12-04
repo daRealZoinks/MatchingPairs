@@ -1,4 +1,5 @@
-﻿using Game.Services;
+﻿using System.Runtime.CompilerServices;
+using Game.Services;
 
 namespace Game.ViewModels
 {
@@ -6,7 +7,7 @@ namespace Game.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
