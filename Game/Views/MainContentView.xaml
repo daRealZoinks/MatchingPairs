@@ -9,7 +9,7 @@
     </UserControl.DataContext>
 
     <Grid>
-        <Button Content="Play" HorizontalAlignment="Right" Margin="0,251,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
+        <Button Content="Play" HorizontalAlignment="Right" Margin="0,251,666,0" VerticalAlignment="Top" Height="35" Width="88" Command="{Binding PlayCommand}"/>
         <Button Content="Options" HorizontalAlignment="Right" Margin="0,310,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
         <Button Content="Quit" HorizontalAlignment="Right" Margin="0,365,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
         <Button Content="Change user" HorizontalAlignment="Left" Margin="658,188,0,0" VerticalAlignment="Top" Height="29" Width="77" Command="{Binding SwitchToUserControl2Command}"/>
