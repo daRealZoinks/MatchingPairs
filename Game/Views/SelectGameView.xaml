@@ -4,19 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Game.Views"
+             xmlns:vm="clr-namespace:Game.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.DataContext>
+        <vm:SelectGameViewModel/>
+    </UserControl.DataContext>
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
-        <StackPanel.Resources>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="Margin" Value="0,50,0,0"/>
-            </Style>
-        </StackPanel.Resources>
-        
-        <Button Content="New Game" />
-        <Button Content="Open Game"/>
-        <Button Content="Show leaderboard"/>
+    <StackPanel>
+        <Button Content="Back" Width="100" HorizontalAlignment="Left" Command="{Binding GoBackCommand}"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 50 0 0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0,50,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Content="New Game" />
+            <Button Content="Open Game"/>
+            <Button Content="Show leaderboard" Command="{Binding SwitchToLeaderboardCommand}"/>
+        </StackPanel>
+
     </StackPanel>
+    
 </UserControl>
