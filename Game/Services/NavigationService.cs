@@ -45,4 +45,14 @@ public class NavigationService : INavigationService
 		}
 	}
 
+	public void NavigateToPage<T>(object viewModel) where T : UserControl, new()
+	{
+		var page = new T();
+
+		page.DataContext = viewModel;
+
+		_frame.Navigate(page);
+	}
+
+
 }

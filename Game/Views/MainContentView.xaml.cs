@@ -1,4 +1,5 @@
-﻿using Game.ViewModels;
+﻿using Game.Models;
+using Game.ViewModels;
 using System.Windows.Controls;
 
 namespace Game.Views;
@@ -11,6 +12,5 @@ public partial class MainContentView : UserControl
 	public MainContentView()
 	{
 		InitializeComponent();
-		DataContext = new MainContentViewModel();
 	}
 }
