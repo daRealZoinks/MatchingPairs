@@ -4,30 +4,24 @@
     <Username>User1</Username>
     <TotalGames>10</TotalGames>
     <GamesWon>5</GamesWon>
-    <ProfilePic>profilepic1.jpg</ProfilePic>
+	  <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\4.jpg</ProfilePic>
   </User>
   <User>
     <Username>User2</Username>
     <TotalGames>15</TotalGames>
     <GamesWon>10</GamesWon>
-    <ProfilePic>profilepic2.jpg</ProfilePic>
+	  <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\3.jpg</ProfilePic>
   </User>
   <User>
-    <Username>gggg</Username>
+    <Username>user3</Username>
     <TotalGames>0</TotalGames>
     <GamesWon>0</GamesWon>
-    <ProfilePic />
+    <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\10.jpg</ProfilePic>
   </User>
   <User>
-    <Username>test</Username>
+    <Username>user4</Username>
     <TotalGames>0</TotalGames>
     <GamesWon>0</GamesWon>
-    <ProfilePic />
-  </User>
-  <User>
-    <Username>test2</Username>
-    <TotalGames>0</TotalGames>
-    <GamesWon>0</GamesWon>
-    <ProfilePic />
+    <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\2.jpg</ProfilePic>
   </User>
 </ArrayOfUser>

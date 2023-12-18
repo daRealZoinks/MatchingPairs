@@ -1,21 +1,22 @@
-﻿using Game.Views;
+﻿using Game.Models;
+using Game.ViewModels;
+using Game.Views;
 using System.Windows;
-using System.Windows.Navigation;
 using NavigationService = Game.Services.NavigationService;
 
 namespace Game
 {
-    /// <summary>
-    /// Interaction logic for MainView.xaml
-    /// </summary>
-    public partial class MainView : Window
-    {
-        private readonly NavigationService _navigationService;
-        public MainView()
-        {
-            InitializeComponent();
-            _navigationService = NavigationService.Instance(MainFrame);
-            _navigationService.NavigateToPage<MainContentView>();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for MainView.xaml
+	/// </summary>
+	public partial class MainView : Window
+	{
+		public MainView()
+		{
+			InitializeComponent();
+			_ = NavigationService.Instance(MainFrame);
+			var vm = new MainContentViewModel(new User("hkdkqh", 0, 0, "hgdjhygj")); //TODO: Load the last user from games list
+			NavigationService.GetInstance().NavigateToPage<MainContentView>(vm);
+		}
+	}
 }
