@@ -4,15 +4,16 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using Game.Models;
 using Game.Services;
+using System.Text;
 
 namespace Game.ViewModels
 {
-    public class GameViewModel : INotifyPropertyChanged
+    public class GameViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        private Card? _selectedCard1;
+        private Card? _selectedCard2;
 
-        private List<Pair> _pairs = [];
-        private Card? _selectedCard;
+        public Board Board { get; set; }
 
         public Grid Grid { get; set; }
 
@@ -29,83 +30,74 @@ namespace Game.ViewModels
             Grid.RowDefinitions.Clear();
             Grid.ColumnDefinitions.Clear();
 
+            Board = new Board
+            {
+                Width = width,
+                Height = height
+            };
+
             // Add rows and columns to the grid
-            for (var i = 0; i < height; i++)
+            for (var i = 0; i < Board.Height; i++)
             {
                 Grid.RowDefinitions.Add(new RowDefinition());
             }
 
-            for (var i = 0; i < width; i++)
+            for (var i = 0; i < Board.Width; i++)
             {
                 Grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
             // Add pairs to the list
-            for (var i = 0; i < (width * height) / 2; i++)
+            for (var i = 0; i < width * height / 2; i++)
             {
                 var card1 = new Card { Content = $"{i + 1}" };
                 var card2 = new Card { Content = $"{i + 1}" };
-                _pairs.Add(new Pair(card1, card2));
+                Board.Pairs.Add(new Pair { Card1 = card1, Card2 = card2 });
             }
 
-            // Shuffle the pairs
+            // Create a list for all cards in the board pairs, but shuffled
+            var cards = new List<Card>();
+            foreach (var pair in Board.Pairs)
+            {
+                cards.Add(pair.Card1);
+                cards.Add(pair.Card2);
+            }
+
             var rng = new Random();
-            var n = _pairs.Count;
+            int n = cards.Count;
             while (n > 1)
             {
                 n--;
-                var k = rng.Next(n + 1);
-                (_pairs[k], _pairs[n]) = (_pairs[n], _pairs[k]);
+                int k = rng.Next(n + 1);
+                (cards[n], cards[k]) = (cards[k], cards[n]);
             }
-
-            // Create a list of buttons
-            var buttons = new List<Button>();
 
             // Add buttons to the list
             var index = 0;
             for (var row = 0; row < height; row++)
             {
-                for (var col = 0; col < width; col++)
+                for (var column = 0; column < width; column++)
                 {
                     // Skip the middle button
-                    if (row == height / 2 && col == width / 2)
+                    if (row == height / 2 && column == width / 2)
                     {
                         continue;
                     }
 
-                    var button = CreateCard(index % 2 == 0 ? _pairs[index / 2].Card1 : _pairs[index / 2].Card2);
-                    buttons.Add(button);
+                    var card = cards[index];
+                    card.Row = row;
+                    card.Column = column;
+                    cards.Add(card);
                     index++;
                 }
             }
 
-            // Shuffle the buttons
-            n = buttons.Count;
-            while (n > 1)
+            foreach (var card in cards)
             {
-                n--;
-                var k = rng.Next(n + 1);
-                (buttons[k], buttons[n]) = (buttons[n], buttons[k]);
-            }
-
-            // Add buttons to the grid
-            index = 0;
-            for (var row = 0; row < height; row++)
-            {
-                for (var col = 0; col < width; col++)
-                {
-                    // Skip the middle button
-                    if (row == height / 2 && col == width / 2)
-                    {
-                        continue;
-                    }
-
-                    var button = buttons[index];
-                    Grid.SetRow(button, row);
-                    Grid.SetColumn(button, col);
-                    Grid.Children.Add(button);
-                    index++;
-                }
+                var button = CreateCard(card);
+                Grid.SetRow(button, card.Row);
+                Grid.SetColumn(button, card.Column);
+                Grid.Children.Add(button);
             }
         }
 
@@ -119,45 +111,69 @@ namespace Game.ViewModels
 
             card.Button = button;
 
-            button.SetBinding(Button.CommandProperty, new Binding("CardClickCommand"));
+            button.Click += (sender, args) => CardClickCommand.Execute(card);
 
             return button;
         }
 
         private void Card_Click(Card clickedCard)
         {
-            if (_selectedCard == null)
+            if (_selectedCard1 != null && _selectedCard2 != null)
             {
-                _selectedCard = clickedCard;
-                _selectedCard.Button.Content = _selectedCard.Content;
+                _selectedCard1.Button.Content = "";
+                _selectedCard1 = null;
+                _selectedCard2.Button.Content = "";
+                _selectedCard2 = null;
             }
-            else
+
+            if (_selectedCard1 == null)
             {
-                var pair = _pairs.Find(p => Equals(p, new Pair(_selectedCard, clickedCard)));
+                // Flip the cards face down
+
+                _selectedCard1 = clickedCard;
+                _selectedCard1.Button.Content = _selectedCard1.Content;
+            }
+            else if (_selectedCard2 == null)
+            {
+                _selectedCard2 = clickedCard;
+                _selectedCard2.Button.Content = _selectedCard2.Content;
+
+                if (_selectedCard1.Equals(_selectedCard2))
+                {
+                    _selectedCard2 = null;
+                    return;
+                }
+
+                var pair = Board.Pairs.Find(p =>
+                {
+                    return (p.Card1.Equals(_selectedCard1) && p.Card2.Equals(_selectedCard2)) ||
+                           (p.Card1.Equals(_selectedCard2) && p.Card2.Equals(_selectedCard1));
+                });
 
                 if (pair != null)
                 {
                     // Match
 
                     pair.IsMatched = true;
-                    _pairs.Remove(pair);
-                    _selectedCard.Button.Content = _selectedCard.Content;
-                    clickedCard.Button.Content = clickedCard.Content;
-                    _selectedCard.Button.IsEnabled = false;
-                    clickedCard.Button.IsEnabled = false;
-
-                    _selectedCard = null;
+                    Board.Pairs.Remove(pair);
+                    _selectedCard1.Button.Content = "";
+                    _selectedCard2.Button.Content = "";
+                    _selectedCard1.Button.IsEnabled = false;
+                    _selectedCard2.Button.IsEnabled = false;
                 }
                 else
                 {
                     // No match
 
-                    _selectedCard.Button.Content = null;
-                    _selectedCard = null;
+                    _selectedCard1.Button.Content = _selectedCard1.Content;
+                    _selectedCard2.Button.Content = _selectedCard2.Content;
                 }
             }
-        }
 
-        // Implement the INotifyPropertyChanged interface...
+            if (Board.Pairs.Count == 0)
+            {
+                MessageBox.Show("You won!");
+            }
+        }
     }
 }
