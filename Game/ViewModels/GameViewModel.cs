@@ -1,6 +1,4 @@
-﻿
-
-using Game.Models;
+﻿using Game.Models;
 using Game.Services;
 using System.Windows;
 using System.Windows.Controls;
