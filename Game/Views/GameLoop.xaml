@@ -7,10 +7,15 @@
              xmlns:vm="clr-namespace:Game.ViewModels"
              mc:Ignorable="d"
              Height="450" Width="800">
-    <Grid>
+
+    <UserControl.Resources>
+        <vm:GameViewModel x:Key="GameViewModel"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" DataContext="{StaticResource GameViewModel}">
 
         <Grid x:Name="Grid" Margin="22,0,22,58" RenderTransformOrigin="0.5,0.5" />
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Command="{Binding LoadBoardCommand}"/>
 
     </Grid>
 </UserControl>

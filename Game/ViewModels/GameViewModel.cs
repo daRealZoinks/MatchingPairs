@@ -17,11 +17,32 @@ namespace Game.ViewModels
 
         public Grid Grid { get; set; }
 
-        public ICommand CardClickCommand { get; }
+        public ICommand CardClickCommand { get; private set; }
+        public ICommand SaveBoardCommand { get; private set; }
+        public ICommand LoadBoardCommand { get; private set; }
 
         public GameViewModel()
         {
             CardClickCommand = new RelayCommand<Card>(Card_Click);
+            SaveBoardCommand = new RelayCommand(Save);
+            LoadBoardCommand = new RelayCommand(Load);
+        }
+
+        public void Save()
+        {
+            GameService.SaveBoard(Board);
+        }
+
+        public void Load()
+        {
+            var board = GameService.LoadBoard();
+
+            if (board is null)
+            {
+                return;
+            }
+
+            LoadFromBoard(board);
         }
 
         public void LoadFromBoard(Board board)
@@ -150,7 +171,8 @@ namespace Game.ViewModels
 
             card.Button = button;
 
-            button.Click += (sender, args) => CardClickCommand.Execute(card);
+            button.Command = CardClickCommand;
+            button.CommandParameter = card;
 
             return button;
         }

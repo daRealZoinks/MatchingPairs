@@ -5,78 +5,26 @@
   <Pairs>
     <Pair>
       <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Dragonfly.png</PicturePath>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Cricket.png</PicturePath>
+        <Row>1</Row>
+        <Column>2</Column>
+      </Card1>
+      <Card2>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Cricket.png</PicturePath>
+        <Row>1</Row>
+        <Column>1</Column>
+      </Card2>
+      <IsMatched>false</IsMatched>
+    </Pair>
+    <Pair>
+      <Card1>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Mad.png</PicturePath>
         <Row>3</Row>
-        <Column>1</Column>
-      </Card1>
-      <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Dragonfly.png</PicturePath>
-        <Row>2</Row>
-        <Column>4</Column>
-      </Card2>
-      <IsMatched>false</IsMatched>
-    </Pair>
-    <Pair>
-      <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\CryingWhileLaughing.png</PicturePath>
-        <Row>0</Row>
-        <Column>4</Column>
-      </Card1>
-      <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\CryingWhileLaughing.png</PicturePath>
-        <Row>0</Row>
-        <Column>0</Column>
-      </Card2>
-      <IsMatched>false</IsMatched>
-    </Pair>
-    <Pair>
-      <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Mad.png</PicturePath>
-        <Row>4</Row>
-        <Column>3</Column>
+        <Column>2</Column>
       </Card1>
       <Card2>
         <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Mad.png</PicturePath>
-        <Row>1</Row>
-        <Column>1</Column>
-      </Card2>
-      <IsMatched>false</IsMatched>
-    </Pair>
-    <Pair>
-      <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Butterfly.png</PicturePath>
-        <Row>4</Row>
-        <Column>0</Column>
-      </Card1>
-      <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Butterfly.png</PicturePath>
-        <Row>4</Row>
-        <Column>1</Column>
-      </Card2>
-      <IsMatched>false</IsMatched>
-    </Pair>
-    <Pair>
-      <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Cricket.png</PicturePath>
-        <Row>1</Row>
-        <Column>0</Column>
-      </Card1>
-      <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Cricket.png</PicturePath>
-        <Row>2</Row>
-        <Column>0</Column>
-      </Card2>
-      <IsMatched>false</IsMatched>
-    </Pair>
-    <Pair>
-      <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Spider.png</PicturePath>
-        <Row>2</Row>
-        <Column>3</Column>
-      </Card1>
-      <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Spider.png</PicturePath>
-        <Row>0</Row>
+        <Row>3</Row>
         <Column>1</Column>
       </Card2>
       <IsMatched>false</IsMatched>
@@ -85,23 +33,23 @@
       <Card1>
         <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Ladybug.png</PicturePath>
         <Row>1</Row>
-        <Column>3</Column>
+        <Column>4</Column>
       </Card1>
       <Card2>
         <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Ladybug.png</PicturePath>
-        <Row>3</Row>
+        <Row>0</Row>
         <Column>2</Column>
       </Card2>
       <IsMatched>false</IsMatched>
     </Pair>
     <Pair>
       <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Frightened.png</PicturePath>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Bee.png</PicturePath>
         <Row>0</Row>
-        <Column>3</Column>
+        <Column>0</Column>
       </Card1>
       <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Frightened.png</PicturePath>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Bee.png</PicturePath>
         <Row>3</Row>
         <Column>4</Column>
       </Card2>
@@ -110,11 +58,50 @@
     <Pair>
       <Card1>
         <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Snail.png</PicturePath>
-        <Row>3</Row>
-        <Column>0</Column>
+        <Row>4</Row>
+        <Column>1</Column>
       </Card1>
       <Card2>
         <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Snail.png</PicturePath>
+        <Row>4</Row>
+        <Column>3</Column>
+      </Card2>
+      <IsMatched>false</IsMatched>
+    </Pair>
+    <Pair>
+      <Card1>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Dragonfly.png</PicturePath>
+        <Row>2</Row>
+        <Column>3</Column>
+      </Card1>
+      <Card2>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Dragonfly.png</PicturePath>
+        <Row>0</Row>
+        <Column>3</Column>
+      </Card2>
+      <IsMatched>false</IsMatched>
+    </Pair>
+    <Pair>
+      <Card1>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Firefly2.png</PicturePath>
+        <Row>0</Row>
+        <Column>1</Column>
+      </Card1>
+      <Card2>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Firefly2.png</PicturePath>
+        <Row>4</Row>
+        <Column>0</Column>
+      </Card2>
+      <IsMatched>false</IsMatched>
+    </Pair>
+    <Pair>
+      <Card1>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Butterfly.png</PicturePath>
+        <Row>1</Row>
+        <Column>3</Column>
+      </Card1>
+      <Card2>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Butterfly.png</PicturePath>
         <Row>4</Row>
         <Column>4</Column>
       </Card2>
@@ -122,40 +109,53 @@
     </Pair>
     <Pair>
       <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Surprised.png</PicturePath>
-        <Row>1</Row>
-        <Column>2</Column>
-      </Card1>
-      <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Surprised.png</PicturePath>
-        <Row>1</Row>
-        <Column>4</Column>
-      </Card2>
-      <IsMatched>false</IsMatched>
-    </Pair>
-    <Pair>
-      <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Bee.png</PicturePath>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Frightened.png</PicturePath>
         <Row>2</Row>
         <Column>1</Column>
       </Card1>
       <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Bee.png</PicturePath>
-        <Row>0</Row>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Frightened.png</PicturePath>
+        <Row>2</Row>
+        <Column>4</Column>
+      </Card2>
+      <IsMatched>false</IsMatched>
+    </Pair>
+    <Pair>
+      <Card1>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Surprised.png</PicturePath>
+        <Row>1</Row>
+        <Column>0</Column>
+      </Card1>
+      <Card2>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Surprised.png</PicturePath>
+        <Row>4</Row>
         <Column>2</Column>
       </Card2>
       <IsMatched>false</IsMatched>
     </Pair>
     <Pair>
       <Card1>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Firefly2.png</PicturePath>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\CryingWhileLaughing.png</PicturePath>
+        <Row>3</Row>
+        <Column>0</Column>
+      </Card1>
+      <Card2>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\CryingWhileLaughing.png</PicturePath>
+        <Row>2</Row>
+        <Column>0</Column>
+      </Card2>
+      <IsMatched>false</IsMatched>
+    </Pair>
+    <Pair>
+      <Card1>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Spider.png</PicturePath>
         <Row>3</Row>
         <Column>3</Column>
       </Card1>
       <Card2>
-        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Firefly2.png</PicturePath>
-        <Row>4</Row>
-        <Column>2</Column>
+        <PicturePath>C:\Users\murar\Source\Repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\Cards\Spider.png</PicturePath>
+        <Row>0</Row>
+        <Column>4</Column>
       </Card2>
       <IsMatched>false</IsMatched>
     </Pair>
