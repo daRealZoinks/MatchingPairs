@@ -5,7 +5,7 @@ namespace Game.Models;
 
 public class Card
 {
-    public string Content { get; init; }
+    public string PicturePath { get; init; }
 
     [XmlIgnore]
     public Button Button { get; set; }

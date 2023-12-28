@@ -1,10 +1,12 @@
-﻿using System.Windows.Input;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
+﻿
+
 using Game.Models;
 using Game.Services;
-using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Game.ViewModels
 {
@@ -22,6 +24,39 @@ namespace Game.ViewModels
         public GameViewModel()
         {
             CardClickCommand = new RelayCommand<Card>(Card_Click);
+        }
+
+        public void LoadFromBoard(Board board)
+        {
+            Board = board;
+
+            // Clear any existing rows and columns
+            Grid.RowDefinitions.Clear();
+            Grid.ColumnDefinitions.Clear();
+
+            // Add rows and columns to the grid
+            for (var i = 0; i < Board.Height; i++)
+            {
+                Grid.RowDefinitions.Add(new RowDefinition());
+            }
+
+            for (var i = 0; i < Board.Width; i++)
+            {
+                Grid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+
+            foreach (var pair in Board.Pairs)
+            {
+                var button1 = CreateCard(pair.Card1);
+                Grid.SetRow(button1, pair.Card1.Row);
+                Grid.SetColumn(button1, pair.Card1.Column);
+                Grid.Children.Add(button1);
+
+                var button2 = CreateCard(pair.Card2);
+                Grid.SetRow(button2, pair.Card2.Row);
+                Grid.SetColumn(button2, pair.Card2.Column);
+                Grid.Children.Add(button2);
+            }
         }
 
         public void GenerateGame(int width, int height)
@@ -47,11 +82,18 @@ namespace Game.ViewModels
                 Grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
+            var picturePaths = CardPicturesService.LoadPictures();
+
+            var rng = new Random();
             // Add pairs to the list
             for (var i = 0; i < width * height / 2; i++)
             {
-                var card1 = new Card { Content = $"{i + 1}" };
-                var card2 = new Card { Content = $"{i + 1}" };
+                var picture = picturePaths[rng.Next(picturePaths.Count)];
+
+                var card1 = new Card { PicturePath = picture };
+                var card2 = new Card { PicturePath = picture };
+
+                picturePaths.Remove(picture);
                 Board.Pairs.Add(new Pair { Card1 = card1, Card2 = card2 });
             }
 
@@ -63,7 +105,6 @@ namespace Game.ViewModels
                 cards.Add(pair.Card2);
             }
 
-            var rng = new Random();
             int n = cards.Count;
             while (n > 1)
             {
@@ -105,7 +146,7 @@ namespace Game.ViewModels
         {
             var button = new Button
             {
-                Margin = new Thickness(10)
+                Margin = new Thickness(10),
                 // Set other properties as needed
             };
 
@@ -118,11 +159,18 @@ namespace Game.ViewModels
 
         private void Card_Click(Card clickedCard)
         {
+            var cardBackColor = new Color
+            {
+                R = 221,
+                G = 221,
+                B = 221,
+            };
+
             if (_selectedCard1 != null && _selectedCard2 != null)
             {
-                _selectedCard1.Button.Content = "";
+                _selectedCard1.Button.Background = new SolidColorBrush(cardBackColor);
                 _selectedCard1 = null;
-                _selectedCard2.Button.Content = "";
+                _selectedCard2.Button.Background = new SolidColorBrush(cardBackColor);
                 _selectedCard2 = null;
             }
 
@@ -131,12 +179,12 @@ namespace Game.ViewModels
                 // Flip the cards face down
 
                 _selectedCard1 = clickedCard;
-                _selectedCard1.Button.Content = _selectedCard1.Content;
+                _selectedCard1.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard1.PicturePath, UriKind.Relative)));
             }
             else if (_selectedCard2 == null)
             {
                 _selectedCard2 = clickedCard;
-                _selectedCard2.Button.Content = _selectedCard2.Content;
+                _selectedCard2.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard2.PicturePath, UriKind.Relative)));
 
                 if (_selectedCard1.Equals(_selectedCard2))
                 {
@@ -156,8 +204,8 @@ namespace Game.ViewModels
 
                     pair.IsMatched = true;
                     Board.Pairs.Remove(pair);
-                    _selectedCard1.Button.Content = "";
-                    _selectedCard2.Button.Content = "";
+                    _selectedCard1.Button.Background = new SolidColorBrush(cardBackColor);
+                    _selectedCard2.Button.Background = new SolidColorBrush(cardBackColor);
                     _selectedCard1.Button.IsEnabled = false;
                     _selectedCard2.Button.IsEnabled = false;
                 }
@@ -165,8 +213,8 @@ namespace Game.ViewModels
                 {
                     // No match
 
-                    _selectedCard1.Button.Content = _selectedCard1.Content;
-                    _selectedCard2.Button.Content = _selectedCard2.Content;
+                    _selectedCard1.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard1.PicturePath, UriKind.Relative)));
+                    _selectedCard2.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard2.PicturePath, UriKind.Relative)));
                 }
             }
 
