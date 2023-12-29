@@ -7,7 +7,13 @@ public partial class GameLoop
     public GameLoop()
     {
         InitializeComponent();
+    }
 
-        (LayoutRoot.DataContext as GameViewModel).Grid = Grid;
+    public GameLoop(GameViewModel viewModel)
+    {
+        InitializeComponent();
+
+        DataContext = viewModel;
+        viewModel.Grid = Grid;
     }
 }

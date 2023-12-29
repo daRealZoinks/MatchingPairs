@@ -10,6 +10,5 @@
     <!--<Grid>
         <local:MainContentView/>
     </Grid>-->
-    <!-- <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/> -->
-    <local:GameLoop></local:GameLoop>
+     <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/> 
 </Window>
