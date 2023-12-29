@@ -5,8 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Game.Views"
              mc:Ignorable="d"
-             Height="450" Width="800">
+             Height="400" Width="800">
     <Grid>
-        <Grid x:Name="Grid" Margin="22,0,22,58" RenderTransformOrigin="0.5,0.5" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="Grid" Grid.Row="0"/>
+            <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" />
+        </Grid>
     </Grid>
 </UserControl>

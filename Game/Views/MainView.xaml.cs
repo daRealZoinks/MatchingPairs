@@ -1,5 +1,4 @@
-﻿using Game.Models;
-using Game.ViewModels;
+﻿using Game.ViewModels;
 using Game.Views;
 using System.Windows;
 using NavigationService = Game.Services.NavigationService;
@@ -15,7 +14,7 @@ namespace Game
         {
             InitializeComponent();
             _ = NavigationService.Instance(MainFrame);
-            var vm = new MainContentViewModel(new User("hkdkqh", 0, 0, "hgdjhygj")); //TODO: Load the last user from games list
+            var vm = new MainContentViewModel();
             NavigationService.GetInstance().NavigateToPage<MainContentView>(vm);
         }
     }

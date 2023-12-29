@@ -15,5 +15,6 @@ public partial class GameLoop
 
         DataContext = viewModel;
         viewModel.Grid = Grid;
+        SaveButton.Command = viewModel.SaveBoardCommand;
     }
 }
