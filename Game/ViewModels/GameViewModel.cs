@@ -30,12 +30,12 @@ namespace Game.ViewModels
 
         public void Save()
         {
-            GameService.SaveBoard(Board);
+            GameService.SaveBoard(Board, GameService.filePath);
         }
 
         public void Load()
         {
-            var board = GameService.LoadBoard();
+            var board = GameService.LoadBoard(GameService.filePath);
 
             if (board is null)
             {
@@ -101,7 +101,7 @@ namespace Game.ViewModels
                 Grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            var picturePaths = CardPicturesService.LoadPictures();
+            var picturePaths = CardPicturesService.LoadPictures(CardPicturesService.path);
 
             var rng = new Random();
             // Add pairs to the list

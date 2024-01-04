@@ -34,7 +34,7 @@ public class LeaderboardViewModel:ViewModelBase
 
 	private void SetLeaderboard()
 	{
-		var x = UserService.GetAllUsers();
+		var x = UserService.GetAllUsers(UserService.filePath);
 		x = x.OrderByDescending(order => order.GamesWon).ThenBy(oreder => oreder.Username).ToList();
 		_users = new(x);
 	}

@@ -68,9 +68,9 @@ public class ChangeUserViewModel : ViewModelBase
 
     public ChangeUserViewModel()
     {
-        _users = new ObservableCollection<User>(UserService.GetAllUsers());
+        _users = new ObservableCollection<User>(UserService.GetAllUsers(UserService.filePath));
         _selectedUser = Users.FirstOrDefault();
-        _profilePictures = ProfilePicturesService.LoadPictures();
+        _profilePictures = ProfilePicturesService.LoadPictures(ProfilePicturesService.path);
         _currentProfilePicture = _profilePictures[0];
 
 
@@ -97,7 +97,7 @@ public class ChangeUserViewModel : ViewModelBase
 
         var newUser = new User(NewUserName, 0, 0, CurrentProfilePicture);
 
-        UserService.AddUser(newUser);
+        UserService.AddUser(newUser, UserService.filePath);
         Users.Add(newUser);
         //SelectedUser = Users[^1];
     }
