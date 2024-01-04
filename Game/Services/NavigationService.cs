@@ -31,6 +31,11 @@ public class NavigationService : INavigationService
         _frame.Navigate(page);
     }
 
+    public void NavigateToPage(UserControl userControl)
+    {
+        _frame.Navigate(userControl);
+    }
+
     public void GoBack()
     {
         if (_frame.CanGoBack)

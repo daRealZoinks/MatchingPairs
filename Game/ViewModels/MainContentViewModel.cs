@@ -7,6 +7,8 @@ namespace Game.ViewModels;
 
 public class MainContentViewModel : ViewModelBase
 {
+    private readonly ChangeUserView _changeUserView;
+
     private User _user;
     public User User
     {
@@ -22,22 +24,17 @@ public class MainContentViewModel : ViewModelBase
     public ICommand SwitchToUserControl2Command { get; private set; }
     public ICommand PlayCommand { get; private set; }
 
-    public MainContentViewModel(User user)
+    public MainContentViewModel(/*User user,*/ ChangeUserView changeUserView)
     {
         SwitchToUserControl2Command = new RelayCommand(SwitchToUserControl2);
         PlayCommand = new RelayCommand(Play);
-        User = user;
-
+        //User = user;
+        _changeUserView = changeUserView;
     }
 
-    public MainContentViewModel()
-    {
-        SwitchToUserControl2Command = new RelayCommand(SwitchToUserControl2);
-        PlayCommand = new RelayCommand(Play);
-    }
     private void SwitchToUserControl2()
     {
-        NavigationService.GetInstance().NavigateToPage<ChangeUserView>();
+        NavigationService.GetInstance().NavigateToPage(_changeUserView);
     }
 
     private void Play()

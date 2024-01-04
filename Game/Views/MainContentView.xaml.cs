@@ -9,8 +9,10 @@ namespace Game.Views;
 /// </summary>
 public partial class MainContentView : UserControl
 {
-	public MainContentView()
+	public MainContentView(MainContentViewModel mainContentViewModel)
 	{
 		InitializeComponent();
-	}
+		DataContext = mainContentViewModel;
+
+    }
 }

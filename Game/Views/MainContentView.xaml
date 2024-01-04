@@ -4,10 +4,6 @@
              xmlns:vm="clr-namespace:Game.ViewModels"
              Height="450" Width="800">
 
-    <UserControl.DataContext>
-        <vm:MainContentViewModel/>
-    </UserControl.DataContext>
-
     <Grid>
         <Button Content="Play" HorizontalAlignment="Right" Margin="0,251,666,0" VerticalAlignment="Top" Height="35" Width="88" Command="{Binding PlayCommand}"/>
         <Button Content="Options" HorizontalAlignment="Right" Margin="0,310,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
