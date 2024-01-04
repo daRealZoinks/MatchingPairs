@@ -21,8 +21,8 @@
                 </Style>
             </StackPanel.Resources>
 
-            <Button Content="New Game" />
-            <Button Content="Open Game"/>
+            <Button Content="New Game" Command="{Binding NewGameCommand}"/>
+            <Button Content="Open Game" Command="{Binding OpenGameCommand}"/>
             <Button Content="Show leaderboard" Command="{Binding SwitchToLeaderboardCommand}"/>
         </StackPanel>
 
