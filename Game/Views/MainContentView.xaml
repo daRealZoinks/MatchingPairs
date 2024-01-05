@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Game.Views.MainContentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Game.ViewModels"
+             Height="450" Width="800">
+
+    <UserControl.DataContext>
+        <vm:MainContentViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Button Content="Play" HorizontalAlignment="Right" Margin="0,251,666,0" VerticalAlignment="Top" Height="35" Width="88" Command="{Binding PlayCommand}"/>
+        <Button Content="Options" HorizontalAlignment="Right" Margin="0,310,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
+        <Button Content="Quit" HorizontalAlignment="Right" Margin="0,365,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
+        <Button Content="Change user" HorizontalAlignment="Left" Margin="658,188,0,0" VerticalAlignment="Top" Height="29" Width="77" Command="{Binding SwitchToUserControl2Command}"/>
+        <TextBlock DataContext="{Binding User}" Text="{Binding Username}" HorizontalAlignment="Left" Margin="46,28,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="150" Margin="622,19,0,0" VerticalAlignment="Top" 
+               DataContext="{Binding User}" Source="{Binding ProfilePic}"/>
+    </Grid>
+</UserControl>

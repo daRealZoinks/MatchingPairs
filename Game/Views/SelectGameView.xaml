@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Game.Views.SelectGameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Game.Views"
+             xmlns:vm="clr-namespace:Game.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:SelectGameViewModel/>
+    </UserControl.DataContext>
+
+    <StackPanel>
+        <Button Content="Back" Width="100" HorizontalAlignment="Left" Command="{Binding GoBackCommand}"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 50 0 0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0,50,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Content="New Game" Command="{Binding NewGameCommand}"/>
+            <Button Content="Open Game" Command="{Binding OpenGameCommand}"/>
+            <Button Content="Show leaderboard" Command="{Binding SwitchToLeaderboardCommand}"/>
+        </StackPanel>
+
+    </StackPanel>
+    
+</UserControl>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User>
+    <Username>User1</Username>
+    <TotalGames>10</TotalGames>
+    <GamesWon>5</GamesWon>
+	  <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\4.jpg</ProfilePic>
+  </User>
+  <User>
+    <Username>User2</Username>
+    <TotalGames>15</TotalGames>
+    <GamesWon>10</GamesWon>
+	  <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\3.jpg</ProfilePic>
+  </User>
+  <User>
+    <Username>user3</Username>
+    <TotalGames>0</TotalGames>
+    <GamesWon>0</GamesWon>
+    <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\10.jpg</ProfilePic>
+  </User>
+  <User>
+    <Username>user4</Username>
+    <TotalGames>0</TotalGames>
+    <GamesWon>0</GamesWon>
+    <ProfilePic>C:\Users\Andreea\cloned_repos\MatchingPairs\Game\bin\Debug\net8.0-windows\..\..\..\Images\ProfilePictures\2.jpg</ProfilePic>
+  </User>
+</ArrayOfUser>
