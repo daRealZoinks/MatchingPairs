@@ -43,12 +43,12 @@ public class MainContentViewModel : ViewModelBase
         PlayCommand = new RelayCommand(Play);
 		User = GameService.GetLastGame().User ?? new();
     }
-    private void SwitchToUserControl2()
+    public void SwitchToUserControl2()
     {
         NavigationService.GetInstance().NavigateToPage<ChangeUserView>();
     }
 
-    private void Play()
+    public void Play()
     {
         NavigationService.GetInstance().NavigateToPage<SelectGameView>();
     }

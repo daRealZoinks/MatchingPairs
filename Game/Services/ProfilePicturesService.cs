@@ -4,11 +4,11 @@ namespace Game.Services
 {
 	public static class ProfilePicturesService
 	{
-		private const string _path = "..\\..\\..\\Images\\ProfilePictures\\";
+		public const string path = "..\\..\\..\\Images\\ProfilePictures\\";
 
-		public static List<string> LoadPictures()
+		public static List<string> LoadPictures(string path)
 		{
-			string fullPath = Path.Combine(Directory.GetCurrentDirectory(), _path);
+			string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path);
 			return Directory.GetFiles(fullPath, "*.jpg").ToList();
 		}
 	}

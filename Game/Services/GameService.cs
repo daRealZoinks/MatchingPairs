@@ -1,4 +1,4 @@
-﻿using Game.Models;
+using Game.Models;
 using System.IO;
 using System.Xml.Serialization;
 

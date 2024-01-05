@@ -19,17 +19,17 @@ public class SelectGameViewModel
         OpenGameCommand = new RelayCommand(OpenGame);
     }
 
-    private void SwitchToLeaderboard()
+    public void SwitchToLeaderboard()
     {
         NavigationService.GetInstance().NavigateToPage<LeaderboardView>();
     }
 
-    private void GoBack()
+    public void GoBack()
     {
         NavigationService.GetInstance().GoBack();
     }
 
-    private void NewGame()
+    public void NewGame()
     {
         var viewModel = new GameViewModel();
         NavigationService.GetInstance().NavigateToPage<GameLoop>(viewModel);
@@ -37,7 +37,7 @@ public class SelectGameViewModel
         viewModel.GenerateGame(5, 5);
     }
 
-    private void OpenGame()
+    public void OpenGame()
     {
         var viewModel = new GameViewModel();
         NavigationService.GetInstance().NavigateToPage<GameLoop>(viewModel);

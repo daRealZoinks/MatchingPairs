@@ -4,11 +4,11 @@ namespace Game.Services;
 
 public class CardPicturesService
 {
-    private const string _path = "..\\..\\..\\Images\\Cards\\";
+    public const string path = "..\\..\\..\\Images\\Cards\\";
 
-    public static List<string> LoadPictures()
+    public static List<string> LoadPictures(string path)
     {
-        string fullPath = Path.Combine(Directory.GetCurrentDirectory(), _path);
+        string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path);
         return Directory.GetFiles(fullPath, "*.png").ToList();
     }
 }
