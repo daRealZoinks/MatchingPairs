@@ -14,9 +14,6 @@ public class GameViewModel : ViewModelBase
     private Card? _selectedCard1;
     private Card? _selectedCard2;
 
-    //public Board Board { get; set; }
-    //public User User { get; set; }
-
     GameObject Game { get; set; }
     User User { get; set; }
 
@@ -28,32 +25,30 @@ public class GameViewModel : ViewModelBase
 
     public GameViewModel(User user)
     {
-		CardClickCommand = new RelayCommand<Card>(Card_Click);
-		SaveBoardCommand = new RelayCommand(Save);
-		LoadBoardCommand = new RelayCommand(Load);
+        CardClickCommand = new RelayCommand<Card>(Card_Click);
+        SaveBoardCommand = new RelayCommand(Save);
+        LoadBoardCommand = new RelayCommand(Load);
         User = user;
-        Game = new();
-        Game.User = User;
-	}
+        Game = new()
+        {
+            User = User
+        };
+    }
     public GameViewModel()
     {
         CardClickCommand = new RelayCommand<Card>(Card_Click);
         SaveBoardCommand = new RelayCommand(Save);
         LoadBoardCommand = new RelayCommand(Load);
-  //      Game = new()
-  //      {
-  //          User = new()
-		//};
-	}
+    }
 
     public void Save()
     {
-        GameService.SaveGame(Game);
+        GameService.SaveGame(Game, GameService.filePath);
     }
 
     public void Load()
     {
-        var game = GameService.LoadGame(User);
+        var game = GameService.LoadGame(User, GameService.filePath);
 
         if (game is null)
         {
@@ -93,6 +88,12 @@ public class GameViewModel : ViewModelBase
             Grid.SetRow(button2, pair.Card2.Row);
             Grid.SetColumn(button2, pair.Card2.Column);
             Grid.Children.Add(button2);
+
+            if (pair.IsMatched)
+            {
+                button1.IsEnabled = false;
+                button2.IsEnabled = false;
+            }
         }
     }
 
@@ -119,7 +120,7 @@ public class GameViewModel : ViewModelBase
             Grid.ColumnDefinitions.Add(new ColumnDefinition());
         }
 
-        var picturePaths = CardPicturesService.LoadPictures();
+        var picturePaths = CardPicturesService.LoadPictures(CardPicturesService.path);
 
         var rng = new Random();
         // Add pairs to the list
@@ -241,7 +242,6 @@ public class GameViewModel : ViewModelBase
                 // Match
 
                 pair.IsMatched = true;
-                Game.Board.Pairs.Remove(pair);
                 _selectedCard1.Button.Background = new SolidColorBrush(cardBackColor);
                 _selectedCard2.Button.Background = new SolidColorBrush(cardBackColor);
                 _selectedCard1.Button.IsEnabled = false;
