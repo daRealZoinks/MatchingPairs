@@ -7,37 +7,37 @@ using NavigationService = Game.Services.NavigationService;
 namespace Game.ViewModels;
 
 
-public class LeaderboardViewModel:ViewModelBase
+public class LeaderboardViewModel : ViewModelBase
 {
-	public ICommand GoBackCommand { get; private set; }
-	private ObservableCollection<User> _users;
-	public ObservableCollection<User> Users
-	{
-		get { return _users; }
-		set
-		{
-			_users = value;
-			OnPropertyChanged();
-		}
-	}
-
-	public LeaderboardViewModel()
+    public ICommand GoBackCommand { get; private set; }
+    private ObservableCollection<User> _users;
+    public ObservableCollection<User> Users
     {
-		GoBackCommand = new RelayCommand(GoBack);
-		SetLeaderboard();
-	}
+        get { return _users; }
+        set
+        {
+            _users = value;
+            OnPropertyChanged();
+        }
+    }
 
-	private void GoBack()
-	{
-		NavigationService.GetInstance().GoBack();
-	}
+    public LeaderboardViewModel()
+    {
+        GoBackCommand = new RelayCommand(GoBack);
+        SetLeaderboard();
+    }
 
-	private void SetLeaderboard()
-	{
-		var x = UserService.GetAllUsers(UserService.filePath);
-		x = x.OrderByDescending(order => order.GamesWon).ThenBy(oreder => oreder.Username).ToList();
-		_users = new(x);
-	}
+    public void GoBack()
+    {
+        NavigationService.GetInstance().GoBack();
+    }
+
+    public void SetLeaderboard()
+    {
+        var x = UserService.GetAllUsers(UserService.filePath);
+        x = x.OrderByDescending(order => order.GamesWon).ThenBy(oreder => oreder.Username).ToList();
+        _users = new(x);
+    }
 }
 
 
