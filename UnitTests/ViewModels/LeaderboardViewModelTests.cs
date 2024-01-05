@@ -1,4 +1,6 @@
-﻿namespace Game.ViewModels.Tests
+﻿using Game.ViewModels;
+
+namespace UnitTests.ViewModels
 {
     [TestClass]
     public class LeaderboardViewModelTests
