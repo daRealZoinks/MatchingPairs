@@ -6,14 +6,63 @@
              xmlns:local="clr-namespace:Game.Views"
              mc:Ignorable="d"
              Height="400" Width="800">
+
+    <UserControl.Resources>
+        <!-- Gradient Brushes for the Save Button -->
+        <LinearGradientBrush x:Key="SaveButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF5555" Offset="0"/>
+            <GradientStop Color="#DD2222" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SaveButtonGradientHover" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF7777" Offset="0"/>
+            <GradientStop Color="#FF3333" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!-- Style for the Save Button -->
+        <Style x:Key="SaveButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="{StaticResource SaveButtonGradient}"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Opacity="0.25" BlurRadius="10" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SaveButtonGradientHover}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="Grid" Grid.Row="0"/>
-            <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" />
+            <Grid x:Name="Grid" Grid.Row="0" Margin="0,0,0,10"/>
+            <Button x:Name="SaveButton" 
+                    Width="50"
+                    Height="68"
+                    Content="Save" 
+                    Style="{StaticResource SaveButtonStyle}"
+                    HorizontalAlignment="Left" 
+                    Grid.Row="1" 
+                    VerticalAlignment="Center" Margin="5,0,0,0" />
         </Grid>
     </Grid>
 </UserControl>

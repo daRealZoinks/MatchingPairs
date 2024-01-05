@@ -4,17 +4,100 @@
              xmlns:vm="clr-namespace:Game.ViewModels"
              Height="450" Width="800">
 
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="BackgroundGrey" Color="GhostWhite"/>
+
+        <LinearGradientBrush x:Key="ButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF5555" Offset="0"/>
+            <GradientStop Color="#DD2222" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ButtonGradientHover" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF7777" Offset="0"/>
+            <GradientStop Color="#FF3333" Offset="1"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="MainButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Opacity="0.25" BlurRadius="10" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="{StaticResource ButtonGradient}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ButtonGradientHover}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <UserControl.DataContext>
         <vm:MainContentViewModel/>
     </UserControl.DataContext>
 
-    <Grid>
-        <Button Content="Play" HorizontalAlignment="Right" Margin="0,251,666,0" VerticalAlignment="Top" Height="35" Width="88" Command="{Binding PlayCommand}"/>
-        <Button Content="Options" HorizontalAlignment="Right" Margin="0,310,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
-        <Button Content="Quit" HorizontalAlignment="Right" Margin="0,365,666,0" VerticalAlignment="Top" Height="35" Width="88"/>
-        <Button Content="Change user" HorizontalAlignment="Left" Margin="658,188,0,0" VerticalAlignment="Top" Height="29" Width="77" Command="{Binding SwitchToUserControl2Command}"/>
-        <TextBlock DataContext="{Binding User}" Text="{Binding Username}" HorizontalAlignment="Left" Margin="46,28,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="150" Margin="622,19,0,0" VerticalAlignment="Top" 
-               DataContext="{Binding User}" Source="{Binding ProfilePic}"/>
+    <Grid Background="{StaticResource BackgroundGrey}">
+        <Button Content="Play" 
+                Style="{StaticResource MainButtonStyle}"
+                HorizontalAlignment="Center" 
+                Margin="0,153,0,0" 
+                VerticalAlignment="Top" 
+                Height="35" 
+                Width="188" 
+                Command="{Binding PlayCommand}"/>
+
+        <Button Content="Options" 
+                Style="{StaticResource MainButtonStyle}"
+                HorizontalAlignment="Center" 
+                Margin="0,225,0,0" 
+                VerticalAlignment="Top" 
+                Height="35" 
+                Width="188"/>
+
+        <Button Content="Quit" 
+                Style="{StaticResource MainButtonStyle}"
+                HorizontalAlignment="Center" 
+                Margin="0,300,0,0" 
+                VerticalAlignment="Top" 
+                Height="35" 
+                Width="188"/>
+
+        <Button Content="Change user" 
+                Style="{StaticResource MainButtonStyle}"
+                HorizontalAlignment="Right" 
+                Margin="0,300,49,0" 
+                VerticalAlignment="Top" 
+                Height="35" 
+                Padding="10,5" 
+                Command="{Binding SwitchToUserControl2Command}" Width="96"/>
+
+        <TextBlock DataContext="{Binding User}" 
+                   Text="{Binding Username}" 
+                   HorizontalAlignment="Left" 
+                   Margin="685,233,0,0" 
+                   VerticalAlignment="Top" 
+                   Foreground="Black"
+                   FontSize="14"
+                   FontWeight="Bold" Width="66" Height="27"/>
+
+        <Image Source="{Binding User.ProfilePic}" 
+               HorizontalAlignment="Left" 
+               Height="150" 
+               Margin="622,19,0,0" 
+               VerticalAlignment="Top"/>
     </Grid>
 </UserControl>
