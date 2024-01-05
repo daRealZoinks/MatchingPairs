@@ -1,6 +1,7 @@
 ﻿using Game.Models;
+using Game.Services;
 
-namespace Game.Services.Tests
+namespace UnitTests.Services
 {
     [TestClass]
     public class UserServiceTests
@@ -8,7 +9,7 @@ namespace Game.Services.Tests
         [TestMethod]
         public void GetAllUsers_ShouldGetUsers_WhenCalled()
         {
-            var users = UserService.GetAllUsers("..\\..\\..\\..\\Game\\Data\\TestUsers.xml"); 
+            var users = UserService.GetAllUsers("..\\..\\..\\..\\Game\\Data\\TestUsers.xml");
             Assert.IsNotNull(users);
         }
 
