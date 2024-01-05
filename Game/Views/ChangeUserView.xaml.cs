@@ -8,9 +8,9 @@ namespace Game.Views;
 /// </summary>
 public partial class ChangeUserView : UserControl
 {
-	public ChangeUserView(ChangeUserViewModel changeUserViewModel)
+	public ChangeUserView()
 	{
 		InitializeComponent();
-		DataContext = changeUserViewModel;
+		DataContext = new ChangeUserViewModel();
 	}
 }

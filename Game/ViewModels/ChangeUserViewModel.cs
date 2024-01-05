@@ -104,9 +104,9 @@ public class ChangeUserViewModel : ViewModelBase
 
     public void ChangeUser()
     {
-        //TODO: mai tarziu
-        //var vm = new MainContentViewModel(SelectedUser ?? new());
-        //NavigationService.GetInstance().NavigateToPage<MainContentView>(vm);
+        var vm = new MainContentViewModel(SelectedUser ?? new());
+        NavigationService.GetInstance().NavigateToPage<MainContentView>(vm);
+
     }
 
     public void NextImage()

@@ -10,13 +10,12 @@ namespace Game
     /// </summary>
     public partial class MainView : Window
     {
-        public MainView(MainContentView mainContentView)
+        public MainView()
         {
             InitializeComponent();
-            //_ = NavigationService.Instance(MainFrame);
-            //var vm = new MainContentViewModel();
-            //NavigationService.GetInstance().NavigateToPage<MainContentView>(vm);
-            MainFrame.Navigate(mainContentView);
+            _ = NavigationService.Instance(MainFrame);
+            var vm = new MainContentViewModel();
+            NavigationService.GetInstance().NavigateToPage<MainContentView>(vm);
         }
     }
 }
