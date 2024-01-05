@@ -50,7 +50,8 @@ public class MainContentViewModel : ViewModelBase
 
     public void Play()
     {
-        NavigationService.GetInstance().NavigateToPage<SelectGameView>();
+		SelectGameViewModel var = new(User);
+        NavigationService.GetInstance().NavigateToPage<SelectGameView>(var);
     }
 
 }

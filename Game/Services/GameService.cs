@@ -42,7 +42,7 @@ namespace Game.Services
 			//}
 			//return null;
 			var games = GetAllGames();
-			return games.Find(game => game.User == user);
+			return games.Find(game => game.User.Username == user.Username);
 		}
 
 		public static GameObject? GetLastGame()

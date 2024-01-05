@@ -18,7 +18,7 @@ public class GameViewModel : ViewModelBase
     //public User User { get; set; }
 
     GameObject Game { get; set; }
-    User User { get; set; } = new();
+    User User { get; set; }
 
     public Grid Grid { get; set; }
 
@@ -26,16 +26,25 @@ public class GameViewModel : ViewModelBase
     public ICommand SaveBoardCommand { get; private set; }
     public ICommand LoadBoardCommand { get; private set; }
 
+    public GameViewModel(User user)
+    {
+		CardClickCommand = new RelayCommand<Card>(Card_Click);
+		SaveBoardCommand = new RelayCommand(Save);
+		LoadBoardCommand = new RelayCommand(Load);
+        User = user;
+        Game = new();
+        Game.User = User;
+	}
     public GameViewModel()
     {
         CardClickCommand = new RelayCommand<Card>(Card_Click);
         SaveBoardCommand = new RelayCommand(Save);
         LoadBoardCommand = new RelayCommand(Load);
-        Game = new()
-        {
-            User = User
-        };
-    }
+  //      Game = new()
+  //      {
+  //          User = new()
+		//};
+	}
 
     public void Save()
     {
@@ -110,7 +119,7 @@ public class GameViewModel : ViewModelBase
             Grid.ColumnDefinitions.Add(new ColumnDefinition());
         }
 
-        var picturePaths = CardPicturesService.LoadPictures(CardPicturesService.path);
+        var picturePaths = CardPicturesService.LoadPictures();
 
         var rng = new Random();
         // Add pairs to the list
