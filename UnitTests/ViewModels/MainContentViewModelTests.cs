@@ -7,13 +7,6 @@ namespace UnitTests.ViewModels
     public class MainContentViewModelTests
     {
         [TestMethod]
-        public void MainContentViewModel_ShouldCreateTheViewModel_WhenCalled()
-        {
-            var mainContentViewModel = new MainContentViewModel();
-            Assert.IsNotNull(mainContentViewModel);
-        }
-
-        [TestMethod]
         public void MainContentViewModel_ShouldCreateTheViewModel_WhenCalledWithAUser()
         {
             var mainContentViewModel = new MainContentViewModel(new User());
