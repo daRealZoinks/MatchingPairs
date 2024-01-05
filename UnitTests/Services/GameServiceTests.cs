@@ -9,14 +9,14 @@ namespace UnitTests.Services
         [TestMethod]
         public void SaveBoard_ShouldSave_WhenCalled()
         {
-            var board = new Board();
-            GameService.SaveBoard(board, "..\\..\\..\\..\\Game\\Data\\TestBoard.xml");
+            var gameObject = new GameObject();
+            GameService.SaveGame(gameObject, "..\\..\\..\\..\\Game\\Data\\TestGame.xml");
         }
 
         [TestMethod]
         public void LoadBoard_ShouldLoad_WhenCalled()
         {
-            var board = GameService.LoadBoard("..\\..\\..\\..\\Game\\Data\\TestBoard.xml");
+            var board = GameService.GetAllGames("..\\..\\..\\..\\Game\\Data\\TestGame.xml");
             Assert.IsNotNull(board);
         }
     }

@@ -1,4 +1,5 @@
-﻿using Game.Services;
+﻿using Game.Models;
+using Game.Services;
 using Game.Views;
 using System.Windows.Input;
 
@@ -10,7 +11,17 @@ public class SelectGameViewModel
     public ICommand OpenGameCommand { get; set; }
     public ICommand SwitchToLeaderboardCommand { get; private set; }
     public ICommand GoBackCommand { get; private set; }
+    
+    public User User { get; private set; }
 
+    public SelectGameViewModel(User user)
+    {
+		SwitchToLeaderboardCommand = new RelayCommand(SwitchToLeaderboard);
+		GoBackCommand = new RelayCommand(GoBack);
+		NewGameCommand = new RelayCommand(NewGame);
+		OpenGameCommand = new RelayCommand(OpenGame);
+		User = user;
+    }
     public SelectGameViewModel()
     {
         SwitchToLeaderboardCommand = new RelayCommand(SwitchToLeaderboard);
@@ -31,7 +42,7 @@ public class SelectGameViewModel
 
     public void NewGame()
     {
-        var viewModel = new GameViewModel();
+        var viewModel = new GameViewModel(User);
         NavigationService.GetInstance().NavigateToPage<GameLoop>(viewModel);
 
         viewModel.GenerateGame(5, 5);
@@ -39,7 +50,7 @@ public class SelectGameViewModel
 
     public void OpenGame()
     {
-        var viewModel = new GameViewModel();
+        var viewModel = new GameViewModel(User);
         NavigationService.GetInstance().NavigateToPage<GameLoop>(viewModel);
 
         viewModel.Load();
