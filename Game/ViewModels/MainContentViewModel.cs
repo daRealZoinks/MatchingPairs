@@ -1,4 +1,5 @@
 ﻿using Game.Models;
+using Game.Services;
 using Game.Views;
 using System.Windows.Input;
 using NavigationService = Game.Services.NavigationService;
@@ -19,6 +20,12 @@ public class MainContentViewModel : ViewModelBase
             OnPropertyChanged();
         }
     }
+
+    public String UserGreeting
+    {
+        get { return "Wellcome, " + User.Username; }
+    }
+
     public ICommand SwitchToUserControl2Command { get; private set; }
     public ICommand PlayCommand { get; private set; }
 
@@ -34,6 +41,7 @@ public class MainContentViewModel : ViewModelBase
     {
         SwitchToUserControl2Command = new RelayCommand(SwitchToUserControl2);
         PlayCommand = new RelayCommand(Play);
+        User = GameService.GetLastGame(GameService.filePath).User ?? new();
     }
     public void SwitchToUserControl2()
     {
@@ -42,7 +50,8 @@ public class MainContentViewModel : ViewModelBase
 
     public void Play()
     {
-        NavigationService.GetInstance().NavigateToPage<SelectGameView>();
+        SelectGameViewModel var = new(User);
+        NavigationService.GetInstance().NavigateToPage<SelectGameView>(var);
     }
 
 }

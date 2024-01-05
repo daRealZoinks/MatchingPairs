@@ -13,4 +13,9 @@ public partial class LeaderboardView : UserControl
 		InitializeComponent();
 		DataContext = new LeaderboardViewModel();
 	}
+
+    private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+    {
+
+    }
 }
