@@ -8,24 +8,69 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="BackgroundGrey" Color="GhostWhite"/>
+
+        <LinearGradientBrush x:Key="ButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF5555" Offset="0"/>
+            <GradientStop Color="#DD2222" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ButtonGradientHover" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF7777" Offset="0"/>
+            <GradientStop Color="#FF3333" Offset="1"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="MainButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Opacity="0.25" BlurRadius="10" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="{StaticResource ButtonGradient}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ButtonGradientHover}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <UserControl.DataContext>
         <vm:SelectGameViewModel/>
     </UserControl.DataContext>
 
-    <StackPanel>
-        <Button Content="Back" Width="100" HorizontalAlignment="Left" Command="{Binding GoBackCommand}"/>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 50 0 0">
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Margin" Value="0,50,0,0"/>
-                </Style>
-            </StackPanel.Resources>
+    <StackPanel Background="{StaticResource BackgroundGrey}">
+        <Button Content="Back" 
+                Width="110" 
+                HorizontalAlignment="Left" 
+                Command="{Binding GoBackCommand}" 
+                Style="{StaticResource MainButtonStyle}" Height="30" />
 
-            <Button Content="New Game" Command="{Binding NewGameCommand}"/>
-            <Button Content="Open Game" Command="{Binding OpenGameCommand}"/>
-            <Button Content="Show leaderboard" Command="{Binding SwitchToLeaderboardCommand}"/>
+        <StackPanel HorizontalAlignment="Center" Margin="0 50 0 0" Height="212">
+            <Button Content="New Game" 
+                    Command="{Binding NewGameCommand}" 
+                    Style="{StaticResource MainButtonStyle}" Height="32" Width="170" Margin="15"/>
+            <Button Content="Open Game" 
+                    Command="{Binding OpenGameCommand}" 
+                    Style="{StaticResource MainButtonStyle}" Height="32" Width="170" Margin="15"/>
+            <Button Content="Show leaderboard" 
+                    Command="{Binding SwitchToLeaderboardCommand}" 
+                    Style="{StaticResource MainButtonStyle}" Height="32" Width="170" Margin="15"/>
         </StackPanel>
-
     </StackPanel>
-    
 </UserControl>

@@ -8,6 +8,45 @@
              mc:Ignorable="d"
              Height="450" Width="800">
 
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="ButtonGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF5555" Offset="0"/>
+            <GradientStop Color="#DD2222" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ButtonGradientHover" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF7777" Offset="0"/>
+            <GradientStop Color="#FF3333" Offset="1"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="MainButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Opacity="0.25" BlurRadius="10" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ButtonGradientHover}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <UserControl.DataContext>
         <vm:ChangeUserViewModel />
     </UserControl.DataContext>
@@ -18,7 +57,6 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <!--Left Section-->
         <StackPanel VerticalAlignment="Center" Grid.Column="0" Margin="10">
             <Label HorizontalAlignment="Center" Content="Enter a username:" />
             <TextBox x:Name="txtUsername" Margin="0 10 0 20" Text="{Binding NewUserName}"/>
@@ -27,15 +65,13 @@
             <StackPanel Margin="0 10">
                 <Image Width="100" Height="100" Margin="10" Source="{Binding CurrentProfilePicture, Mode=TwoWay}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="&lt;&lt;" Command="{Binding PreviousImageCommand}"/>
-                    <Button Content=">>" Command="{Binding NextImageCommand}"/>
+                    <Button Content="&lt;&lt;" Command="{Binding PreviousImageCommand}" Style="{StaticResource MainButtonStyle}"/>
+                    <Button Content=">>" Command="{Binding NextImageCommand}" Style="{StaticResource MainButtonStyle}"/>
                 </StackPanel>
             </StackPanel>
-            <Button Content="Create New User" Command="{Binding CreateUserCommand}"/>
+            <Button Content="Create New User" Command="{Binding CreateUserCommand}" Style="{StaticResource MainButtonStyle}" Height="26"/>
         </StackPanel>
 
-
-        <!--Right Section-->
         <StackPanel Grid.Column="1">
             <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
                 <ListBox.ItemTemplate>
@@ -44,8 +80,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Content="Change user" Command="{Binding ChangeUserCommand}"/>
+            <Button Content="Change user" Command="{Binding ChangeUserCommand}" Style="{StaticResource MainButtonStyle}" Height="31" Width="477"/>
         </StackPanel>
-
     </Grid>
 </UserControl>
