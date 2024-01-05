@@ -1,55 +1,72 @@
-﻿using Game.ViewModels;
+﻿using Game.Models;
+using Game.ViewModels;
+using System.Xml.Serialization;
 
 namespace UnitTests.ViewModels
 {
     [TestClass]
     public class ChangeUserViewModelTests
     {
-        [TestMethod]
-        public void CreateUserTest()
+        private ChangeUserViewModel _changeUserViewModel;
+
+        [TestInitialize]
+        public void TestInitialize()
         {
-            var changeUserViewModel = new ChangeUserViewModel
+            _changeUserViewModel = new ChangeUserViewModel
             {
-                profilePicturesFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml",
-                userFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml"
+                profilePicturesFilePath = "..\\..\\..\\..\\Game\\Images\\ProfilePictures\\",
+                userFilePath = "..\\..\\..\\..\\Game\\Data\\TestUsers.xml"
             };
-            changeUserViewModel.InitializeLists();
+            _changeUserViewModel.InitializeLists();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            // Serialize an empty user list in the test users file
+            var emptyUserList = new List<User>();
+            var serializer = new XmlSerializer(typeof(List<User>));
+            using var writer = new StreamWriter(_changeUserViewModel.userFilePath);
+            serializer.Serialize(writer, emptyUserList);
         }
 
         [TestMethod]
-        public void ChangeUserTest()
+        public void CreateUser_ShouldCreateUser_WhenAValidUsernameIsProvided()
         {
-            var changeUserViewModel = new ChangeUserViewModel
-            {
-                profilePicturesFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml",
-                userFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml"
-            };
-            changeUserViewModel.InitializeLists();
+            _changeUserViewModel.NewUserName = "TestUser";
+            _changeUserViewModel.CreateUser();
 
+            Assert.IsTrue(_changeUserViewModel.Users.Count > 0);
+            Assert.AreEqual("TestUser", _changeUserViewModel.Users[0].Username);
         }
 
         [TestMethod]
-        public void NextImageTest()
+        public void CreateUser_ShouldShowWarning_WhenADuplicateUsernameIsUsed()
         {
-            var changeUserViewModel = new ChangeUserViewModel
-            {
-                profilePicturesFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml",
-                userFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml"
-            };
-            changeUserViewModel.InitializeLists();
-
+            _changeUserViewModel.NewUserName = "TestUser";
+            _changeUserViewModel.CreateUser();
+            _changeUserViewModel.CreateUser();
         }
 
         [TestMethod]
-        public void PreviousImageTest()
+        public void CreateUser_ShouldShowWarning_WhenANullUsernameIsProvided()
         {
-            var changeUserViewModel = new ChangeUserViewModel
-            {
-                profilePicturesFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml",
-                userFilePath = "..\\..\\..\\..\\Game\\Data\\TestProfilePictures.xml"
-            };
-            changeUserViewModel.InitializeLists();
+            _changeUserViewModel.NewUserName = null;
+            _changeUserViewModel.CreateUser();
+        }
 
+        [TestMethod]
+        public void NextImage_ShouldChangeImage_WhenCalled()
+        {
+            _changeUserViewModel.CurrentProfilePicture = "TestPicture1";
+            _changeUserViewModel.NextImage();
+        }
+
+        [TestMethod]
+        public void PreviousImage_ShouldChangeImage_WhenCalled()
+        {
+            _changeUserViewModel.CurrentProfilePicture = "TestPicture2";
+            _changeUserViewModel.PreviousImage();
         }
     }
 }

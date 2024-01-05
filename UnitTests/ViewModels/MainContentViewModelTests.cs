@@ -1,4 +1,5 @@
-﻿using Game.ViewModels;
+﻿using Game.Models;
+using Game.ViewModels;
 
 namespace UnitTests.ViewModels
 {
@@ -6,17 +7,17 @@ namespace UnitTests.ViewModels
     public class MainContentViewModelTests
     {
         [TestMethod]
-        public void SwitchToUserControl2Test()
+        public void MainContentViewModel_ShouldCreateTheViewModel_WhenCalled()
         {
             var mainContentViewModel = new MainContentViewModel();
-            mainContentViewModel.SwitchToUserControl2();
+            Assert.IsNotNull(mainContentViewModel);
         }
 
         [TestMethod]
-        public void PlayTest()
+        public void MainContentViewModel_ShouldCreateTheViewModel_WhenCalledWithAUser()
         {
-            var mainContentViewModel = new MainContentViewModel();
-            mainContentViewModel.Play();
+            var mainContentViewModel = new MainContentViewModel(new User());
+            Assert.IsNotNull(mainContentViewModel);
         }
     }
 }

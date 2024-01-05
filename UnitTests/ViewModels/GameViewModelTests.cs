@@ -6,31 +6,10 @@ namespace UnitTests.ViewModels
     public class GameViewModelTests
     {
         [TestMethod]
-        public void SaveTest()
+        public void GameViewModel_ShouldConstruct_WhenCalled()
         {
             var gameViewModel = new GameViewModel();
-
-        }
-
-        [TestMethod]
-        public void LoadTest()
-        {
-            var gameViewModel = new GameViewModel();
-
-        }
-
-        [TestMethod]
-        public void LoadFromBoardTest()
-        {
-            var gameViewModel = new GameViewModel();
-
-        }
-
-        [TestMethod]
-        public void GenerateGameTest()
-        {
-            var gameViewModel = new GameViewModel();
-
+            Assert.IsNotNull(gameViewModel);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace Game.ViewModels
 {
     public class GameViewModel : ViewModelBase
     {
-        private Card? _selectedCard1;
-        private Card? _selectedCard2;
+        public Card? selectedCard1;
+        public Card? selectedCard2;
 
         public Board Board { get; set; }
 
@@ -186,36 +186,36 @@ namespace Game.ViewModels
                 B = 221,
             };
 
-            if (_selectedCard1 != null && _selectedCard2 != null)
+            if (selectedCard1 != null && selectedCard2 != null)
             {
-                _selectedCard1.Button.Background = new SolidColorBrush(cardBackColor);
-                _selectedCard1 = null;
-                _selectedCard2.Button.Background = new SolidColorBrush(cardBackColor);
-                _selectedCard2 = null;
+                selectedCard1.Button.Background = new SolidColorBrush(cardBackColor);
+                selectedCard1 = null;
+                selectedCard2.Button.Background = new SolidColorBrush(cardBackColor);
+                selectedCard2 = null;
             }
 
-            if (_selectedCard1 == null)
+            if (selectedCard1 == null)
             {
                 // Flip the cards face down
 
-                _selectedCard1 = clickedCard;
-                _selectedCard1.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard1.PicturePath, UriKind.Relative)));
+                selectedCard1 = clickedCard;
+                selectedCard1.Button.Background = new ImageBrush(new BitmapImage(new Uri(selectedCard1.PicturePath, UriKind.Relative)));
             }
-            else if (_selectedCard2 == null)
+            else if (selectedCard2 == null)
             {
-                _selectedCard2 = clickedCard;
-                _selectedCard2.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard2.PicturePath, UriKind.Relative)));
+                selectedCard2 = clickedCard;
+                selectedCard2.Button.Background = new ImageBrush(new BitmapImage(new Uri(selectedCard2.PicturePath, UriKind.Relative)));
 
-                if (_selectedCard1.Equals(_selectedCard2))
+                if (selectedCard1.Equals(selectedCard2))
                 {
-                    _selectedCard2 = null;
+                    selectedCard2 = null;
                     return;
                 }
 
                 var pair = Board.Pairs.Find(p =>
                 {
-                    return (p.Card1.Equals(_selectedCard1) && p.Card2.Equals(_selectedCard2)) ||
-                           (p.Card1.Equals(_selectedCard2) && p.Card2.Equals(_selectedCard1));
+                    return (p.Card1.Equals(selectedCard1) && p.Card2.Equals(selectedCard2)) ||
+                           (p.Card1.Equals(selectedCard2) && p.Card2.Equals(selectedCard1));
                 });
 
                 if (pair != null)
@@ -224,17 +224,17 @@ namespace Game.ViewModels
 
                     pair.IsMatched = true;
                     Board.Pairs.Remove(pair);
-                    _selectedCard1.Button.Background = new SolidColorBrush(cardBackColor);
-                    _selectedCard2.Button.Background = new SolidColorBrush(cardBackColor);
-                    _selectedCard1.Button.IsEnabled = false;
-                    _selectedCard2.Button.IsEnabled = false;
+                    selectedCard1.Button.Background = new SolidColorBrush(cardBackColor);
+                    selectedCard2.Button.Background = new SolidColorBrush(cardBackColor);
+                    selectedCard1.Button.IsEnabled = false;
+                    selectedCard2.Button.IsEnabled = false;
                 }
                 else
                 {
                     // No match
 
-                    _selectedCard1.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard1.PicturePath, UriKind.Relative)));
-                    _selectedCard2.Button.Background = new ImageBrush(new BitmapImage(new Uri(_selectedCard2.PicturePath, UriKind.Relative)));
+                    selectedCard1.Button.Background = new ImageBrush(new BitmapImage(new Uri(selectedCard1.PicturePath, UriKind.Relative)));
+                    selectedCard2.Button.Background = new ImageBrush(new BitmapImage(new Uri(selectedCard2.PicturePath, UriKind.Relative)));
                 }
             }
 

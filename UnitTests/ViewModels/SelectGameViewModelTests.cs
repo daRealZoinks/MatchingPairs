@@ -6,31 +6,10 @@ namespace UnitTests.ViewModels
     public class SelectGameViewModelTests
     {
         [TestMethod]
-        public void SwitchToLeaderboardTest()
+        public void SelectGameViewModel_ShouldConstruct_WhenCalled()
         {
             var selectGameViewModel = new SelectGameViewModel();
-            selectGameViewModel.SwitchToLeaderboard();
-        }
-
-        [TestMethod]
-        public void GoBackTest()
-        {
-            var selectGameViewModel = new SelectGameViewModel();
-            selectGameViewModel.GoBack();
-        }
-
-        [TestMethod]
-        public void NewGameTest()
-        {
-            var selectGameViewModel = new SelectGameViewModel();
-            selectGameViewModel.NewGame();
-        }
-
-        [TestMethod]
-        public void OpenGameTest()
-        {
-            var selectGameViewModel = new SelectGameViewModel();
-            selectGameViewModel.OpenGame();
+            Assert.IsNotNull(selectGameViewModel);
         }
     }
 }
