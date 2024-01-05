@@ -31,11 +31,11 @@ public class GameViewModel : ViewModelBase
         CardClickCommand = new RelayCommand<Card>(Card_Click);
         SaveBoardCommand = new RelayCommand(Save);
         LoadBoardCommand = new RelayCommand(Load);
-		Game = new()
-		{
-			User = User
-		};
-	}
+        Game = new()
+        {
+            User = User
+        };
+    }
 
     public void Save()
     {
@@ -110,7 +110,7 @@ public class GameViewModel : ViewModelBase
             Grid.ColumnDefinitions.Add(new ColumnDefinition());
         }
 
-        var picturePaths = CardPicturesService.LoadPictures();
+        var picturePaths = CardPicturesService.LoadPictures(CardPicturesService.path);
 
         var rng = new Random();
         // Add pairs to the list
