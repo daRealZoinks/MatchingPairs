@@ -48,7 +48,7 @@ namespace Game.Services
         public static GameObject? GetLastGame(string filePath)
         {
             var games = GetAllGames(filePath);
-            return games[0];
-        }
-    }
+			return games.Last();
+		}
+	}
 }
