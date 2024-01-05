@@ -60,6 +60,8 @@ public class ChangeUserViewModel : ViewModelBase
 
     private List<string> _profilePictures;
 
+    public string profilePicturesFilePath = ProfilePicturesService.path;
+    public string userFilePath = UserService.filePath;
 
     public ICommand CreateUserCommand { get; private set; }
     public ICommand ChangeUserCommand { get; private set; }
@@ -68,17 +70,18 @@ public class ChangeUserViewModel : ViewModelBase
 
     public ChangeUserViewModel()
     {
-        _users = new ObservableCollection<User>(UserService.GetAllUsers());
-        _selectedUser = Users.FirstOrDefault();
-        _profilePictures = ProfilePicturesService.LoadPictures();
-        _currentProfilePicture = _profilePictures[0];
-
-
         CreateUserCommand = new RelayCommand(CreateUser);
         ChangeUserCommand = new RelayCommand(ChangeUser);
         NextImageCommand = new RelayCommand(NextImage);
         PreviousImageCommand = new RelayCommand(PreviousImage);
+    }
 
+    public void InitializeLists()
+    {
+        _users = new ObservableCollection<User>(UserService.GetAllUsers(userFilePath));
+        _selectedUser = Users.FirstOrDefault();
+        _profilePictures = ProfilePicturesService.LoadPictures(profilePicturesFilePath);
+        _currentProfilePicture = _profilePictures[0];
     }
 
     public void CreateUser()
@@ -97,7 +100,7 @@ public class ChangeUserViewModel : ViewModelBase
 
         var newUser = new User(NewUserName, 0, 0, CurrentProfilePicture);
 
-        UserService.AddUser(newUser);
+        UserService.AddUser(newUser, userFilePath);
         Users.Add(newUser);
         //SelectedUser = Users[^1];
     }
@@ -106,7 +109,6 @@ public class ChangeUserViewModel : ViewModelBase
     {
         var vm = new MainContentViewModel(SelectedUser ?? new());
         NavigationService.GetInstance().NavigateToPage<MainContentView>(vm);
-
     }
 
     public void NextImage()
@@ -128,5 +130,4 @@ public class ChangeUserViewModel : ViewModelBase
             CurrentProfilePicture = _profilePictures[index - 1];
         }
     }
-
 }
