@@ -14,4 +14,4 @@ Menu (options doesn't work)
 
 And most importantly, you can play the game
 
-<video controls src="README/Screen Recording 2025-05-08 213039.mp4" title="Title"></video>
+![alt text](<README/Screen Recording 2025-05-08 213039.gif>)
